@@ -40,19 +40,49 @@ jobs:
             os-name: "ubuntu-latest",
             java-vendor: "temurin"}
           - {
-            name: "11 Eclipse Zulu OpenJDK",
+            name: "11 Zulu OpenJDK",
             java-version: 11,
             os-name: "ubuntu-latest",
             java-vendor: "zulu"
           }
           - {
-            name: "17 Eclipse Zulu OpenJDK",
+            name: "17 Zulu OpenJDK",
             java-version: 17,
             os-name: "ubuntu-latest",
             java-vendor: "zulu" }
           - {
+            name: "11 Liberica JDK",
+            java-version: 11,
+            os-name: "ubuntu-latest",
+            java-vendor: "liberica"
+          }
+          - {
+            name: "17 Liberica JDK",
+            java-version: 17,
+            os-name: "ubuntu-latest",
+            java-vendor: "liberica"
+          }
+          - {
+            name: "17 Microsoft Build of OpenJDK",
+            java-version: 17,
+            os-name: "ubuntu-latest",
+            java-vendor: "microsoft"
+          }
+          - {
+            name: "11 Microsoft Build of OpenJDK",
+            java-version: 11,
+            os-name: "ubuntu-latest",
+            java-vendor: "microsoft"
+          }
+          - {
             name: "11 Eclipse Temurin Windows",
             java-version: 11,
+            os-name: "windows-latest",
+            java-vendor: "temurin"
+          }
+          - {
+            name: "11 Eclipse Temurin Windows",
+            java-version: 17,
             os-name: "windows-latest",
             java-vendor: "temurin"
           }

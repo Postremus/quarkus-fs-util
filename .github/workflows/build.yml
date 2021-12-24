@@ -44,10 +44,10 @@ jobs:
             maven_args: "$MAVEN_ARGS"
           }
           - {
-            name: "11 Zulu OpenJDK",
+            name: "11.0.0 Liberica JDK",
             java-version: 11.0.0,
             os-name: "ubuntu-latest",
-            java-vendor: "zulu",
+            java-vendor: "liberica",
             maven_args: "$MAVEN_ARGS"
           }
           - {

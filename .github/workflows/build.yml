@@ -31,13 +31,6 @@ jobs:
         java:
           - {
             name: "11 Eclipse Temurin",
-            java-version: 11.0.0,
-            os-name: "ubuntu-latest",
-            java-vendor: "temurin",
-            maven_args: "-Dno-format"
-          }
-          - {
-            name: "11 Eclipse Temurin",
             java-version: 11,
             os-name: "ubuntu-latest",
             java-vendor: "temurin",
@@ -48,6 +41,13 @@ jobs:
             java-version: 17,
             os-name: "ubuntu-latest",
             java-vendor: "temurin",
+            maven_args: "$MAVEN_ARGS"
+          }
+          - {
+            name: "11 Zulu OpenJDK",
+            java-version: 11.0.0,
+            os-name: "ubuntu-latest",
+            java-vendor: "zulu",
             maven_args: "$MAVEN_ARGS"
           }
           - {

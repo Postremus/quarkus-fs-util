@@ -18,6 +18,8 @@ on:
       - '*.adoc'
       - '*.txt'
 
+env:
+  LANG: en_US.UTF-8
 jobs:
   build:
     name: JVM Tests - JDK ${{matrix.java.name}}
@@ -63,7 +65,7 @@ jobs:
           distribution: ${{ matrix.java.java-vendor }}
           java-version: ${{ matrix.java.java-version }}
       - name: Build with Maven
-        run: export LANG=en_US && mvn -B clean install -Dno-format
+        run: mvn -B clean install -Dno-format
       - name: Delete Local Artifacts From Cache
         shell: bash
         run: rm -rf ~/.m2/repository/io/quarkus/quarkus-fs-util*

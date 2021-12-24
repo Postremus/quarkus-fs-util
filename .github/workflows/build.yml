@@ -26,9 +26,23 @@ jobs:
       fail-fast: false
       matrix:
         java:
-          - {name: "11 temurin", java-version: 11, os-name: "ubuntu-latest", java-vendor: "temurin"}
-          - {name: "17 temurin", java-version: 17, os-name: "ubuntu-latest", java-vendor: "temurin"}
-          - {name: "11 Windows temurin", java-version: 11, os-name: "windows-latest", java-vendor: "temurin"}
+          - {
+            name: "11 temurin",
+            java-version: 11,
+            os-name: "ubuntu-latest",
+            java-vendor: "temurin"
+          }
+          - {
+            name: "17 temurin",
+            java-version: 17,
+            os-name: "ubuntu-latest",
+            java-vendor: "temurin"}
+          - {
+            name: "11 Windows temurin",
+            java-version: 11,
+            os-name: "windows-latest",
+            java-vendor: "temurin"
+          }
     steps:
       - uses: actions/checkout@v2
       - name: Get Date

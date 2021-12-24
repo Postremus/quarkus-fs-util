@@ -31,6 +31,13 @@ jobs:
         java:
           - {
             name: "11 Eclipse Temurin",
+            java-version: 11.0.0,
+            os-name: "ubuntu-latest",
+            java-vendor: "temurin",
+            maven_args: "-Dno-format"
+          }
+          - {
+            name: "11 Eclipse Temurin",
             java-version: 11,
             os-name: "ubuntu-latest",
             java-vendor: "temurin",
@@ -70,20 +77,6 @@ jobs:
             os-name: "ubuntu-latest",
             java-vendor: "liberica",
             maven_args: "$MAVEN_ARGS"
-          }
-          - {
-                name: "11 Adopt OpenJDK Hotspot	",
-              java-version: 11,
-              os-name: "ubuntu-latest",
-              java-vendor: "adopt ",
-              maven_args: "$MAVEN_ARGS"
-          }
-          - {
-                name: "11 Adopt OpenJDK OpenJ9",
-              java-version: 11,
-              os-name: "ubuntu-latest",
-              java-vendor: "adopt-openj9",
-              maven_args: "$MAVEN_ARGS"
           }
           - {
             name: "11 Microsoft Build of OpenJDK",

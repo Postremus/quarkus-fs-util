@@ -33,56 +33,56 @@ jobs:
             name: "11 Eclipse Temurin",
             java-version: 11,
             os-name: "ubuntu-latest",
-            java-vendor: "temurin"
+            java-vendor: "temurin",
             maven_args: "-Dno-format"
           }
           - {
             name: "17 Eclipse Temurin",
             java-version: 17,
             os-name: "ubuntu-latest",
-            java-vendor: "temurin"
+            java-vendor: "temurin",
             maven_args: "$MAVEN_ARGS"
           }
           - {
             name: "11 Zulu OpenJDK",
             java-version: 11,
             os-name: "ubuntu-latest",
-            java-vendor: "zulu"
+            java-vendor: "zulu",
             maven_args: "$MAVEN_ARGS"
           }
           - {
             name: "17 Zulu OpenJDK",
             java-version: 17,
             os-name: "ubuntu-latest",
-            java-vendor: "zulu"
+            java-vendor: "zulu",
             maven_args: "$MAVEN_ARGS"
           }
           - {
             name: "11 Liberica JDK",
             java-version: 11,
             os-name: "ubuntu-latest",
-            java-vendor: "liberica"
+            java-vendor: "liberica",
             maven_args: "$MAVEN_ARGS"
           }
           - {
             name: "17 Liberica JDK",
             java-version: 17,
             os-name: "ubuntu-latest",
-            java-vendor: "liberica"
+            java-vendor: "liberica",
             maven_args: "$MAVEN_ARGS"
           }
           - {
             name: "11 Eclipse Temurin Windows",
             java-version: 11,
             os-name: "windows-latest",
-            java-vendor: "temurin"
+            java-vendor: "temurin",
             maven_args: "$MAVEN_ARGS"
           }
           - {
             name: "17 Eclipse Temurin Windows",
             java-version: 17,
             os-name: "windows-latest",
-            java-vendor: "temurin"
+            java-vendor: "temurin",
             maven_args: "$MAVEN_ARGS"
           }
     steps:

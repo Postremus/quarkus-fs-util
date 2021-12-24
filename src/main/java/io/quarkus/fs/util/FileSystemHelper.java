@@ -3,7 +3,6 @@ package io.quarkus.fs.util;
 import io.quarkus.fs.util.sysfs.ConfigurableFileSystemProviderWrapper;
 import io.quarkus.fs.util.sysfs.FileSystemWrapper;
 import io.quarkus.fs.util.sysfs.PathWrapper;
-
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.AccessMode;

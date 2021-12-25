@@ -1,6 +1,8 @@
 
 package io.quarkus.fs.util;
 
+import io.quarkus.fs.util.zfs.ZipFileSystemProviderWrapper;
+import io.quarkus.fs.util.zfs.ZipFileSystemWrapper;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URI;
@@ -212,7 +214,12 @@ public class ZipUtils {
 
         try {
             path = FileSystemHelper.ignoreFileWriteability(path);
-            return FileSystemProviders.ZIP_PROVIDER.newFileSystem(path, env);
+            FileSystem zfs = FileSystemProviders.ZIP_PROVIDER.newFileSystem(path, env);
+
+            ZipFileSystemProviderWrapper zfspWrapper = new ZipFileSystemProviderWrapper(zfs.provider());
+            ZipFileSystemWrapper zfsWrapper = new ZipFileSystemWrapper(zfs, path, zfspWrapper);
+
+            return zfsWrapper;
         } catch (IOException ioe) {
             // include the path for which the filesystem creation failed
             throw new IOException("Failed to create a new filesystem for " + path, ioe);

@@ -14,6 +14,7 @@ import java.nio.file.attribute.FileTime;
 import java.nio.file.spi.FileSystemProvider;
 import java.util.Set;
 import java.util.jar.JarFile;
+import java.util.zip.ZipEntry;
 
 public class ZipFileSystemProviderWrapper extends DelegatingFileSystemProvider {
     /**
@@ -32,16 +33,31 @@ public class ZipFileSystemProviderWrapper extends DelegatingFileSystemProvider {
     @Override
     public <A extends BasicFileAttributes> A readAttributes(Path path, Class<A> type, LinkOption... options)
             throws IOException {
-        JarFile jarFile = ((ZipFileSystemWrapper) path.getFileSystem()).jarFile;
+        String pathStr = path.toString();
+        if (pathStr.length() > 1) {
+            pathStr = pathStr.substring(1);
+            JarFile jarFile = ((ZipFileSystemWrapper) path.getFileSystem()).jarFile;
+
+            ZipEntry entry = jarFile.getEntry(pathStr);
+            if (entry != null) {
+                return (A) new ZipEntryAttributes(entry);
+            }
+        }
         return super.readAttributes(path, type, options);
     }
 
     @Override
     public DirectoryStream<Path> newDirectoryStream(Path dir, DirectoryStream.Filter<? super Path> filter) throws IOException {
-        return super.newDirectoryStream(dir, filter);
+        return new ZipDirectoryStreamWrapper(super.newDirectoryStream(dir, filter), dir.getFileSystem());
     }
 
     private static class ZipEntryAttributes implements BasicFileAttributes {
+
+        private final ZipEntry entry;
+
+        public ZipEntryAttributes(ZipEntry entry) {
+            this.entry = entry;
+        }
 
         @Override
         public FileTime lastModifiedTime() {
@@ -55,17 +71,17 @@ public class ZipFileSystemProviderWrapper extends DelegatingFileSystemProvider {
 
         @Override
         public FileTime creationTime() {
-            return null;
+            return entry.getCreationTime();
         }
 
         @Override
         public boolean isRegularFile() {
-            return false;
+            return !entry.isDirectory();
         }
 
         @Override
         public boolean isDirectory() {
-            return false;
+            return entry.isDirectory();
         }
 
         @Override
@@ -80,12 +96,12 @@ public class ZipFileSystemProviderWrapper extends DelegatingFileSystemProvider {
 
         @Override
         public long size() {
-            return 0;
+            return entry.getSize();
         }
 
         @Override
         public Object fileKey() {
-            return null;
+            return entry.hashCode();
         }
     }
 }
